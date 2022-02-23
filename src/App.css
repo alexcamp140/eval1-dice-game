@@ -1,38 +1,193 @@
-.App {
-  text-align: center;
+.container {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows:50px 35px 50px 50px 150px 150px 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: ". . ." "new new new" ". . ." "player player player" "score score score" ". . ." "currentScore currentScore currentScore " ". . .";
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+p{
+  margin:0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.new {
+  grid-area: new;
+  display: flex;
+  justify-content: center;
+}
+.new span {
+  padding-left: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.player {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 50px;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: ". . player1 player1 . . . . . player2 player2 . .";
+  grid-area: player;
+  color: black;
+  font-size: 2rem;
+  font-family: "Lato", sans-serif;
+}
+.player1 {
+  grid-area: player1;
+  display: flex;
+  justify-content: center;
+}
+
+.player2 {
+  grid-area: player2;
+  display: flex;
+  justify-content: center;
+}
+
+.score {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 150px 200px;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: ". . score1 score1 . . dice . . score2 score2 . .";
+  color: rgba(255, 0, 0, 0.6);
+  font-size: 5rem;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  grid-area: score;
+  align-items: center;
+}
+
+.score1 {
+  grid-area: score1;
+  display: flex;
+  justify-content: center;
+}
+
+.score2 {
+  grid-area: score2;
+  display: flex;
+  justify-content: center;
+}
+
+
+.dice {
+  grid-area: dice;
+  display: flex;
+  justify-content: center;
+  height: 90px;
+}
+
+.play {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: ". . ." ". . ." ". . .";
+  grid-area: play;
+}
+
+.currentScore {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 150px;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: ". . currentScore1 currentScore1 . actions actions actions . currentScore2 currentScore2 . .";
+  color: rgba(10, 10, 10, 0.6);
+  font-size: 1.5rem;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  grid-area: currentScore;
+}
+
+.currentScore1 {
+  grid-area: currentScore1;
+  margin: auto;
+  width: 150px;
+  height: 115px;
+  background-color: rgba(255, 0, 0, 0.6);
+  justify-items: center;
+  align-items: center;
+}
+
+.currentScore2 {
+  grid-area: currentScore2;
+  margin: auto;
+  width: 150px;
+  height: 115px;
+  background-color: rgba(255, 0, 0, 0.6);
+  justify-items: center;
+  align-items: center;
+}
+
+.actions {
+  grid-area: actions;
+  margin: auto;
+}
+
+html,
+body,
+.container {
+  height: 100%;
+  margin: 0;
+}
+
+/* For presentation only, no need to copy the code below */
+
+.container * {
+  /* border: 1px solid red; */
+  position: relative;
+}
+
+.buttonNewGame {
+  display: flex;
+  align-items: center;
+}
+
+.current {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  padding: 10px;
+}
+
+.current p:nth-child(1) {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.current p:nth-child(2) {
   color: white;
+  font-size: 2rem;
+  margin-top: 0px;
 }
 
-.App-link {
-  color: #61dafb;
+#diceCanvas{
+  box-shadow: 0px 0px 10px 10px rgba(216, 216, 216, 0.5);
+  background: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.actions{
+  display: flex;
+  flex-direction: column;
+  height: 130px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button{
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 10px;
+}
+
+span{
+  padding-left: 10px;
 }
