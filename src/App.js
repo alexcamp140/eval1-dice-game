@@ -1,19 +1,22 @@
 import "./App.css";
-import ButtonNew from "./utils/buttonsNew";
+
 import ButtonRollDice from "./utils/buttonRollDice";
 import ButtonHold from "./utils/buttonHold";
+import NewGame from "./components/newGame/newGame";
 
-import Dice from './utils/dice';
+import React, { useState } from "react";
+
+import Dice from "./utils/dice";
 
 function App() {
+
+  const [score, updateScore] = useState ({player1:10,player2:13, currentScorePlayer1:2, currentScorePlayer2:1})
+
   return (
     <div className="App">
       <div className="container">
         <div className="new">
-          <div className="buttonNewGame">
-            <ButtonNew />
-            <span>NEW GAME</span>
-          </div>
+          <NewGame updateScore={updateScore} />
         </div>
         <div className="player">
           <div className="player1">
@@ -25,13 +28,13 @@ function App() {
         </div>
         <div className="score">
           <div className="score1">
-            <p>71</p>
+            <p>{score.player1}</p>
           </div>
           <div className="dice">
-           <Dice/>
+            <Dice />
           </div>
           <div className="score2">
-            <p>50</p>
+            <p>{score.player2}</p>
           </div>
         </div>
 
@@ -39,13 +42,13 @@ function App() {
           <div className="currentScore1">
             <div className="current">
               <p>CURRENT</p>
-              <p>6</p>
+              <p>{score.currentScorePlayer1}</p>
             </div>
           </div>
           <div className="currentScore2">
             <div className="current">
               <p>CURRENT</p>
-              <p>6</p>
+              <p>{score.currentScorePlayer2}</p>
             </div>
           </div>
           <div className="actions">
