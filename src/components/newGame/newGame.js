@@ -1,13 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import ButtonNew from "../../utils/buttonsNew";
 import "./newGame.scss";
 import Modal from "../modal/modal";
 
 function NewGame(props) {
-
-
-  const [gameState, launchNewGame] = useState(0);
 
   const [modal, displayModal] = useState({ visible: 0 });
 
@@ -30,7 +27,6 @@ function NewGame(props) {
       <button
         type="button"
         className="buttonNewGame"
-        onClick={() => launchNewGame(1)}
       >
         <span className="button_icon">
           <ButtonNew />
