@@ -11,10 +11,8 @@ export default function Modal(props) {
 
     const initGame = function(){  
         props.updateScore({
-            player1: 0,
-            player2: 0,
-            currentScorePlayer1: 0,
-            currentScorePlayer2: 0,
+            player1: {round:0, current:0},
+            player2: {round:0, current:0}
          });
          closeModal();
     

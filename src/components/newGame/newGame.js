@@ -36,12 +36,6 @@ function NewGame(props) {
       <Modal visible={modal.visible} displayModal={displayModal} updateScore={props.updateScore} />
     </>
 
-    // <div className="new">
-    //   <div className="buttonNewGame">
-    //     <ButtonNew />
-    //     <span>NEW GAME</span>
-    //   </div>
-    // </div>
   );
 }
 
