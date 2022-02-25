@@ -3,6 +3,7 @@ import "./App.css";
 import ButtonRollDice from "./utils/buttonRollDice";
 import Hold from "./components/hold/hold";
 import NewGame from "./components/newGame/newGame";
+import PictoCurrentPlayer from "./utils/pictoCurrentPlayer"
 
 import React, { useState } from "react";
 
@@ -11,8 +12,8 @@ import firstPlayer from "./utils/firstPlayer/firstplayer";
 
 function App() {
 
-  const [score, updateScore] = useState ({player1:{round:10, current:5},player2:{round:25, current:17}})
-const [currentPlayer, changeCurrentPlayer]= useState(firstPlayer()) ;
+  const [score, updateScore] = useState ({player1:{round:10, current:5},player2:{round:25, current:17}})  
+  const [currentPlayer, changeCurrentPlayer]= useState(firstPlayer()) ;
 
   return (
     <div className="App">
@@ -22,10 +23,10 @@ const [currentPlayer, changeCurrentPlayer]= useState(firstPlayer()) ;
         </div>
         <div className="player">
           <div className="player1">
-            <p> PLAYER 1 </p>
+            <p> PLAYER 1 </p>{currentPlayer==="player1" ? <PictoCurrentPlayer /> :""}
           </div>
           <div className="player2">
-            <p> PLAYER 2 </p>
+            <p> PLAYER 2 </p>{currentPlayer==="player2" ? <PictoCurrentPlayer /> :""}
           </div>
         </div>
         <div className="score">
