@@ -4,6 +4,7 @@ import ButtonNew from "../../utils/buttonsNew";
 import "./newGame.scss";
 import Modal from "../modal/modal";
 
+
 function NewGame(props) {
 
   const [modal, displayModal] = useState({ visible: 0 });
@@ -11,10 +12,9 @@ function NewGame(props) {
 
   useEffect(() => {
 
-    const launchGame = document.querySelector(".buttonNewGame");
+    const launchGame = document.getElementById("buttonNewGame");
 
     launchGame.addEventListener("click", (e) => {
-
 
         displayModal({ visible: 1 });
         e.stopImmediatePropagation();
@@ -26,7 +26,7 @@ function NewGame(props) {
     <>
       <button
         type="button"
-        className="buttonNewGame"
+        id="buttonNewGame"
       >
         <span className="button_icon">
           <ButtonNew />

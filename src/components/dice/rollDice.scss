@@ -1,4 +1,4 @@
-#buttonNewGame {
+.buttonRollDice {
     display: inline-flex;
     height: 50px;
     padding: 0;
@@ -7,5 +7,12 @@
     background: none;
     align-items: center;
     justify-content: center;
+
+    .button_text{
+        font-size: 1.7rem;
+        font-family: "Lato", sans-serif;
+        font-weight: 300;
+    }
+
     
   }
