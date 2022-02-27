@@ -1,5 +1,4 @@
 function updateCurrentScore(currentDice, player, score) {
-  console.log(score);
 
   if (player === "player1") {
     return{
@@ -28,7 +27,6 @@ function updateCurrentScore(currentDice, player, score) {
 
 
 function updateRoundScore(player, score) {
-  console.log(score);
 
   if (player === "player1") {
     return{
@@ -56,5 +54,32 @@ function updateRoundScore(player, score) {
 }
 
 
+function resetScore(player, score) {
 
-export  {updateCurrentScore, updateRoundScore};
+  if (player === "player1") {
+    return{
+      player1: {
+        round: 0,
+        current: 0,
+      },
+      player2: {
+        round: score.player2.round,
+        current: score.player2.current,
+      },
+    };
+  } else if (player === "player2") {
+    return{
+      player1: {
+        round: score.player1.round,
+        current: score.player1.current,
+      },
+      player2: {
+        round: 0,
+        current: 0,
+      },
+    };
+  }
+}
+
+
+export  {updateCurrentScore, updateRoundScore, resetScore};

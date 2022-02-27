@@ -1,12 +1,16 @@
 import ButtonRollDice from "../../utils/buttonRollDice";
 import diceSound from "../../media/gameboard-dice.mp3";
+import errorSound from "../../media/error-sound.mp3";
 import { Howl } from "howler";
-import {updateCurrentScore} from '../../utils/calculScore/score';
+import {updateCurrentScore, resetScore} from '../../utils/calculScore/score';
 import "./rollDice.scss";
 
 function RollDice(props) {
   const sound = new Howl({
     src: [diceSound],
+  });
+  const soundError = new Howl({
+    src: [errorSound],
   });
 
   // variable to store our intervalID
@@ -20,8 +24,6 @@ function RollDice(props) {
   function throwDice() {
     console.log("lancé");
     lastNumber = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
-    
-    
 
     sound.play();
 
@@ -35,9 +37,23 @@ function RollDice(props) {
     setTimeout(() => {
       clearInterval(nIntervId);
       props.updateDiceNumber(lastNumber);
-     let newScore = updateCurrentScore(lastNumber, props.currentPlayer, props.score)
-     console.log(newScore);
-      props.updateScore(newScore);
+      let newScore;
+      if (lastNumber===1){
+          console.log ("j'ai un 1");
+
+        newScore = resetScore(props.currentPlayer, props.score);
+        props.updateScore(newScore);
+        console.log("j'ai reste le score")
+        console.log(newScore)
+        let nextPlayer= props.currentPlayer==="player1"?"player2":"player1"
+        props.changeCurrentPlayer(nextPlayer);
+        soundError.play();
+        console.log("j'ai cnagé le player " + props.currentPlayer);
+
+      } else {
+        newScore = updateCurrentScore(lastNumber, props.currentPlayer, props.score)
+         props.updateScore(newScore);
+      }
     }, 1000);
     return 1;
   }

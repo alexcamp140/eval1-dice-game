@@ -7,58 +7,84 @@ import React, { useState, useEffect } from "react";
 import Dice from "./components/dice/dice";
 import ModalWinner from "./components/modal/modalEndGame";
 import initGame from "./components/newGame/initGame";
-import {checkIfWinner, returnWinner} from './utils/calculScore/verifyScore'
+import { checkIfWinner, returnWinner } from "./utils/calculScore/verifyScore";
+import winSound from "./media/win-sound.mp3";
+import { Howl } from "howler";
+
+const sound = new Howl({
+  src: [winSound],
+});
 
 function App() {
-
-  const [initalScore,initPlayer,initWinner, initModal]=initGame();
+  const [initalScore, initPlayer, initWinner, initModal] = initGame();
   const [score, updateScore] = useState(initalScore);
   const [currentPlayer, changeCurrentPlayer] = useState(initPlayer);
-  const [diceNumber, updateDiceNumber] = useState(1);
-
+  const [diceNumber, updateDiceNumber] = useState(6);
   const [winner, updateWinner] = useState(initWinner);
   const [modalWinner, updateModalWinner] = useState(initModal);
 
   // const btn = document.getElementById("buttonNewGame");
   // btn.setAttribute('disabled', 'disabled')
 
-console.log("démarrage");
-console.log(winner);
-
-  // function newWinner(winner){
-  //   updateWinner(winner);
-  // }
+  console.log("démarrage");
+  console.log(winner);
 
   useEffect(() => {
     console.log("app");
     console.log(score);
     console.log("fin app");
-    
 
     // if (score.player1.round >10){
     //   newWinner('player1');
     //   updateModalWinner({ visible: 1 })
     // }
 
+    //Check if there is a winner
     console.log("check if winner" + checkIfWinner(score));
-    if (checkIfWinner(score)){
+    if (checkIfWinner(score)) {
       console.log("il y a un winner");
-      let newWinner= returnWinner(score)
-      console.log("le winner est : " + newWinner)
+      let newWinner = returnWinner(score);
+      console.log("le winner est : " + newWinner);
       updateWinner(newWinner);
-      updateModalWinner({visible:1})
-      console.log("le winner est de winner  :" + winner)
+      updateModalWinner({ visible: 1 });
+      sound.play();
+      console.log("le winner est de winner  :" + winner);
     }
-    
 
-  },[winner, score, updateWinner]);
+    //check if dice = 1 t reset round
+
+    // if (diceNumber === 1) {
+    //   console.log("j'ai un 1");
+
+    //   let newScore = resetScore(currentPlayer, score);
+    //   updateScore(newScore);
+    //   console.log("j'ai reste le score");
+    //   console.log(newScore);
+    //   changeCurrentPlayer(
+    //     currentPlayer === "player1"
+    //       ? changeCurrentPlayer("player2")
+    //       : changeCurrentPlayer("player1")
+    //   );
+    //   console.log("j'ai cnagé le player " + currentPlayer);
+    // }
+  }, [winner, score, currentPlayer, diceNumber,updateWinner]);
 
   return (
     <div className="App">
       <div className="container">
         <div className="new">
-          <NewGame updateScore={updateScore} updateWinner={updateWinner}  />
-          {winner ? <ModalWinner winner={winner} updateWinner={updateWinner} updateScore={updateScore} visible={modalWinner.visible} updateModalWinner={updateModalWinner}/> : ""}
+          <NewGame updateScore={updateScore} updateWinner={updateWinner} />
+          {winner ? (
+            <ModalWinner
+              winner={winner}
+              updateWinner={updateWinner}
+              updateScore={updateScore}
+              visible={modalWinner.visible}
+              updateModalWinner={updateModalWinner}
+            />
+          ) : (
+            ""
+          )}
         </div>
 
         <div className="player">
@@ -104,6 +130,7 @@ console.log(winner);
                 currentPlayer={currentPlayer}
                 score={score}
                 updateScore={updateScore}
+                changeCurrentPlayer={changeCurrentPlayer}
               />
             </div>
             <div className="hold">

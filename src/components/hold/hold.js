@@ -9,6 +9,8 @@ function Hold(props) {
     let newScore = updateRoundScore(props.currentPlayer, props.score)
     console.log(newScore);
      props.updateScore(newScore);
+     let nextPlayer= props.currentPlayer==="player1"?"player2":"player1"
+        props.changeCurrentPlayer(nextPlayer);
 
 
   }
