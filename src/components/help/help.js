@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import ButtonHelp from "../../utils/buttonsHelp";
 import "./help.scss";
-import Modal from "../modal/modal";
 
 
 function Help(props) {
 
-  const [modal, displayModal] = useState({ visible: 0 });
 
 
   // useEffect(() => {

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import ButtonDisableSound from "../../utils/buttonSound";
 import "./soundNotification.scss";
 
