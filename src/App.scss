@@ -9,7 +9,7 @@ body,
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows:50px 35px 50px 50px 150px 150px 1fr;
+  grid-template-rows: 50px 35px 50px 50px 150px 150px 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas: ". . ." "new new new" ". . ." "player player player" "score score score" ". . ." "currentScore currentScore currentScore " ". . .";
@@ -33,13 +33,13 @@ body,
     color: black;
     font-size: 2rem;
     font-family: "Lato", sans-serif;
-    
+
     .player1 {
       grid-area: player1;
       display: flex;
       justify-content: center;
     }
-    
+
     .player2 {
       grid-area: player2;
       display: flex;
@@ -66,13 +66,13 @@ body,
       display: flex;
       justify-content: center;
     }
-    
+
     .score2 {
       grid-area: score2;
       display: flex;
       justify-content: center;
     }
-    
+
     #dice {
       grid-area: dice;
       display: flex;
@@ -80,25 +80,13 @@ body,
       height: 90px;
     }
   }
-
 }
 
-p{
-  margin:0;
+p {
+  margin: 0;
   margin-top: 5px;
   text-align: center;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 .currentScore {
   display: grid;
@@ -122,7 +110,7 @@ p{
     justify-items: center;
     align-items: center;
   }
-  
+
   .currentScore2 {
     grid-area: currentScore2;
     margin: auto;
@@ -141,9 +129,7 @@ p{
     align-items: center;
     justify-content: space-between;
   }
-  
 }
-
 
 .current {
   display: flex;
@@ -164,72 +150,31 @@ p{
   margin-top: 0px;
 }
 
-#diceCanvas{
+#diceCanvas {
   box-shadow: 0px 0px 10px 10px rgba(216, 216, 216, 0.5);
   background: white;
 }
 
-
-
-.button{
-display: flex;
-flex-direction: row;
-align-items: center;
-padding: 10px;
+.button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
 }
 
-
-
-
-#pictoCurrentPlayer{
+#pictoCurrentPlayer {
   height: 30px;
   margin: 10px;
 }
 
 
-.modalEndGame{
-    position: absolute;
-    background-color:rgb(248, 101, 101);
-    color: white;
-    height: 200px;
-    border: 1px solid #ccc;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
-    padding: 16px;
-    width: 300px;
-    box-sizing: border-box;
-    transition: all 0.3s ease-out;
-    margin:auto;
-    margin-top: 350px;
-    text-align: center;
 
-}
-
-.modalEndGame button{
-  margin: 20px;
-  font-size: 1rem;
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  text-align: center;
-  color: black;
-  background-color: white;
-  border: none;
-  width: 100px;
-  border-radius: 3px;
-}
-
-.modalEndGame p{
-  font-size: 1.5rem;
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  text-align: center;
-}
-
-.footer{
+.footer {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top:50px;
+  margin-top: 50px;
   height: 80px;
   width: 100%;
 }

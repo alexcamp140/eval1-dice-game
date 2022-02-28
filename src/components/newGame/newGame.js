@@ -1,41 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import ButtonNew from "../../utils/buttonsNew";
 import "./newGame.scss";
-import Modal from "../modal/modal";
-
+import Modal from "../modal/modalNew";
 
 function NewGame(props) {
-
-  const [modal, displayModal] = useState({ visible: 0 });
-
-
   useEffect(() => {
-
     const launchGame = document.getElementById("buttonNewGame");
 
     launchGame.addEventListener("click", (e) => {
-
-        displayModal({ visible: 1 });
-        e.stopImmediatePropagation();
-
+      props.displayModalNew({ visible: 1 });
+      e.stopImmediatePropagation();
     });
   });
 
   return (
     <>
-      <button
-        type="button"
-        id="buttonNewGame"
-      >
+      <button type="button" id="buttonNewGame">
         <span className="button_icon">
           <ButtonNew />
         </span>
         <span className="button_text">NEW GAME</span>
       </button>
-      <Modal visible={modal.visible} displayModal={displayModal} updateScore={props.updateScore} />
+      <Modal
+        visible={props.visible}
+        displayModal={props.displayModalNew}
+        updateScore={props.updateScore}
+      />
     </>
-
   );
 }
 

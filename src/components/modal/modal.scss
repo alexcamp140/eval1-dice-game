@@ -1,6 +1,14 @@
-.modal{
+.modalWrapper {
+  position: absolute;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  .modal {
     position: absolute;
-    background-color:rgb(248, 101, 101);
+    background-color: rgb(248, 101, 101);
     color: white;
 
     border: 1px solid #ccc;
@@ -9,25 +17,100 @@
     width: 300px;
     box-sizing: border-box;
     transition: all 0.3s ease-out;
-    margin:auto;
+    margin: auto;
     margin-top: 350px;
     text-align: center;
-    p{
-        font-size: 1.5rem;
-        font-family: "Lato", sans-serif;
-        font-weight: 300;
-        text-align: center;
+    p {
+      font-size: 1.5rem;
+      font-family: "Lato", sans-serif;
+      font-weight: 300;
+      text-align: center;
     }
-    button{
-        margin: 20px;
-        font-size: 1rem;
-        font-family: "Lato", sans-serif;
-        font-weight: 300;
-        text-align: center;
-        color: black;
-        background-color: white;
-        border: none;
-        width: 50px;
-        border-radius: 3px;
+    button {
+      margin: 20px;
+      font-size: 1rem;
+      font-family: "Lato", sans-serif;
+      font-weight: 300;
+      text-align: center;
+      color: black;
+      background-color: white;
+      border: none;
+      width: 50px;
+      border-radius: 3px;
     }
+  }
 }
+
+  .modalHelp {
+    background-color: rgb(248, 101, 101);
+    color: white;
+    border: 1px solid #ccc;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+    padding: 16px;
+    width: 500px;
+    max-width: 100vh;
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;
+    margin: auto;
+    text-align: center;
+    margin-top: 50px;
+    p {
+      font-size: 1rem;
+      font-family: "Lato", sans-serif;
+      font-weight: 300;
+      text-align: center;
+    }
+    li {
+      font-size: 1rem;
+      font-family: "Lato", sans-serif;
+      font-weight: 300;
+      text-align: justify;
+    }
+    button {
+      margin: 20px;
+      font-size: 1rem;
+      font-family: "Lato", sans-serif;
+      font-weight: 300;
+      text-align: center;
+      color: black;
+      background-color: white;
+      border: none;
+      width: 50px;
+      border-radius: 3px;
+    }
+  }
+
+
+    .modalEndGame {
+        position: absolute;
+        background-color: rgb(248, 101, 101);
+        color: white;
+    
+        border: 1px solid #ccc;
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+        padding: 16px;
+        width: 300px;
+        box-sizing: border-box;
+        transition: all 0.3s ease-out;
+        margin: auto;
+        margin-top: 350px;
+        text-align: center;
+        p {
+          font-size: 1.5rem;
+          font-family: "Lato", sans-serif;
+          font-weight: 300;
+          text-align: center;
+        }
+        button {
+          margin: 20px;
+          font-size: 1rem;
+          font-family: "Lato", sans-serif;
+          font-weight: 300;
+          text-align: center;
+          color: black;
+          background-color: white;
+          border: none;
+          width: 90px;
+          border-radius: 3px;
+        }
+    }

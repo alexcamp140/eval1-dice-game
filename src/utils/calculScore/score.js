@@ -59,7 +59,7 @@ function resetScore(player, score) {
   if (player === "player1") {
     return{
       player1: {
-        round: 0,
+        round: score.player1.round,
         current: 0,
       },
       player2: {
@@ -74,7 +74,7 @@ function resetScore(player, score) {
         current: score.player1.current,
       },
       player2: {
-        round: 0,
+        round: score.player2.round,
         current: 0,
       },
     };

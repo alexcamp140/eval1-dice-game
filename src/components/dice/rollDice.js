@@ -2,7 +2,7 @@ import ButtonRollDice from "../../utils/buttonRollDice";
 import diceSound from "../../media/gameboard-dice.mp3";
 import errorSound from "../../media/error-sound.mp3";
 import { Howl } from "howler";
-import {updateCurrentScore, resetScore} from '../../utils/calculScore/score';
+import { updateCurrentScore, resetScore } from "../../utils/calculScore/score";
 import "./rollDice.scss";
 
 function RollDice(props) {
@@ -15,17 +15,13 @@ function RollDice(props) {
 
   // variable to store our intervalID
   let nIntervId;
-
   let lastNumber;
-  
-
   nIntervId = false;
 
   function throwDice() {
-    console.log("lancé");
     lastNumber = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
 
-    if (!props.disabled){
+    if (!props.disabled) {
       sound.play();
     }
 
@@ -37,27 +33,32 @@ function RollDice(props) {
     }
 
     setTimeout(() => {
+      //stop interval after 1 second to stop animate dice result et save the dice score
       clearInterval(nIntervId);
+
+      //set the dice result
       props.updateDiceNumber(lastNumber);
       let newScore;
-      if (lastNumber===1){
-          console.log ("j'ai un 1");
 
+      //rules : chek if the dice result = 1. If it is, reinitialize current(round) score and change player
+      if (lastNumber === 1) {
         newScore = resetScore(props.currentPlayer, props.score);
         props.updateScore(newScore);
-        console.log("j'ai reste le score")
-        console.log(newScore)
-        let nextPlayer= props.currentPlayer==="player1"?"player2":"player1"
+
+        let nextPlayer =
+          props.currentPlayer === "player1" ? "player2" : "player1";
         props.changeCurrentPlayer(nextPlayer);
 
-        if (!props.disabled){
+        if (!props.disabled) {
           soundError.play();
         }
-        console.log("j'ai cnagé le player " + props.currentPlayer);
-
       } else {
-        newScore = updateCurrentScore(lastNumber, props.currentPlayer, props.score)
-         props.updateScore(newScore);
+        newScore = updateCurrentScore(
+          lastNumber,
+          props.currentPlayer,
+          props.score
+        );
+        props.updateScore(newScore);
       }
     }, 1000);
     return 1;

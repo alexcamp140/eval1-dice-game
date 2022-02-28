@@ -1,23 +1,24 @@
 import ButtonHold from "../../utils/buttonHold";
 import "./hold.scss";
-import {updateRoundScore} from '../../utils/calculScore/score';
+import { updateRoundScore } from "../../utils/calculScore/score";
 
 function Hold(props) {
-
-  function holdScore(){
-
-    let newScore = updateRoundScore(props.currentPlayer, props.score)
-    console.log(newScore);
-     props.updateScore(newScore);
-     let nextPlayer= props.currentPlayer==="player1"?"player2":"player1"
-        props.changeCurrentPlayer(nextPlayer);
-
-
+  function holdScore() {
+    let newScore = updateRoundScore(props.currentPlayer, props.score);
+    props.updateScore(newScore);
+    let nextPlayer = props.currentPlayer === "player1" ? "player2" : "player1";
+    props.changeCurrentPlayer(nextPlayer);
   }
 
   return (
     <>
-      <button type="button" className="buttonHold" onClick={()=>{holdScore();}}>
+      <button
+        type="button"
+        className="buttonHold"
+        onClick={() => {
+          holdScore();
+        }}
+      >
         <span className="button_icon">
           <ButtonHold />
         </span>

@@ -3,7 +3,7 @@ function checkIfWinner(score){
 
     for (const player in score){
     
-        if (score[player].round >= 10){
+        if (score[player].round >= 100){
             return true;
         }
         
@@ -13,7 +13,7 @@ function checkIfWinner(score){
 
 function returnWinner(score){
     for (const player in score){
-        if (score[player].round >= 10){
+        if (score[player].round >= 100){
             return player;
         }
     }

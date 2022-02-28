@@ -12,7 +12,8 @@ import { checkIfWinner, returnWinner } from "./utils/calculScore/verifyScore";
 import winSound from "./media/win-sound.mp3";
 import { Howl } from "howler";
 import SoundNotification from "./components/soundNotification/soundNotification";
-
+import ModalHelp from "./components/modal/modalHelp";
+import ModalNew from "./components/modal/modalNew";
 
 const sound = new Howl({
   src: [winSound],
@@ -25,74 +26,49 @@ function App() {
   const [diceNumber, updateDiceNumber] = useState(6);
   const [winner, updateWinner] = useState(initWinner);
   const [modalWinner, updateModalWinner] = useState(initModal);
-  const[disabled, updateSoundStatus]= useState(false);
-
-  // const btn = document.getElementById("buttonNewGame");
-  // btn.setAttribute('disabled', 'disabled')
-
-  console.log("démarrage");
-  console.log(winner);
+  const [disabled, updateSoundStatus] = useState(false);
+  const [modalHelp, displayModalHelp] = useState(initModal);
+  const [modalNew, displayModalNew] = useState(initModal);
 
   useEffect(() => {
-    console.log("app");
-    console.log(score);
-    console.log("fin app");
-
-    // if (score.player1.round >10){
-    //   newWinner('player1');
-    //   updateModalWinner({ visible: 1 })
-    // }
-
     //Check if there is a winner
-    console.log("check if winner" + checkIfWinner(score));
     if (checkIfWinner(score)) {
-      console.log("il y a un winner");
       let newWinner = returnWinner(score);
-      console.log("le winner est : " + newWinner);
       updateWinner(newWinner);
       updateModalWinner({ visible: 1 });
 
-      if (!disabled){
+      //activate or desactivate sound if disabled is update
+      if (!disabled) {
         sound.play();
       }
-
-      console.log("le winner est de winner  :" + winner);
     }
-
-    //check if dice = 1 t reset round
-
-    // if (diceNumber === 1) {
-    //   console.log("j'ai un 1");
-
-    //   let newScore = resetScore(currentPlayer, score);
-    //   updateScore(newScore);
-    //   console.log("j'ai reste le score");
-    //   console.log(newScore);
-    //   changeCurrentPlayer(
-    //     currentPlayer === "player1"
-    //       ? changeCurrentPlayer("player2")
-    //       : changeCurrentPlayer("player1")
-    //   );
-    //   console.log("j'ai cnagé le player " + currentPlayer);
-    // }
-  }, [winner, score, currentPlayer, diceNumber,updateWinner,disabled]);
+  }, [winner, score, currentPlayer, diceNumber, disabled]);
 
   return (
     <div className="App">
+      <ModalHelp
+        visible={modalHelp.visible}
+        displayModalHelp={displayModalHelp}
+      />
+      <ModalNew
+        visible={modalNew.visible}
+        displayModalNew={displayModalNew}
+        updateScore={updateScore}
+      />
+      <ModalWinner
+        winner={winner}
+        updateWinner={updateWinner}
+        updateScore={updateScore}
+        visible={modalWinner.visible}
+        updateModalWinner={updateModalWinner}
+      />
       <div className="container">
         <div className="new">
-          <NewGame updateScore={updateScore} updateWinner={updateWinner} />
-          {winner ? (
-            <ModalWinner
-              winner={winner}
-              updateWinner={updateWinner}
-              updateScore={updateScore}
-              visible={modalWinner.visible}
-              updateModalWinner={updateModalWinner}
-            />
-          ) : (
-            ""
-          )}
+          <NewGame
+            updateScore={updateScore}
+            updateWinner={updateWinner}
+            displayModalNew={displayModalNew}
+          />
         </div>
 
         <div className="player">
@@ -130,6 +106,7 @@ function App() {
               <p>{score.player2.current}</p>
             </div>
           </div>
+
           <div className="actions">
             <div className="rollDice">
               <RollDice
@@ -155,8 +132,11 @@ function App() {
         </div>
       </div>
       <div className="footer">
-        <SoundNotification disabled={disabled} updateSoundStatus={updateSoundStatus}/>
-        <Help/>
+        <SoundNotification
+          disabled={disabled}
+          updateSoundStatus={updateSoundStatus}
+        />
+        <Help modal={modalHelp} displayModalHelp={displayModalHelp} />
       </div>
     </div>
   );

@@ -1,39 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import ButtonHelp from "../../utils/buttonsHelp";
 import "./help.scss";
 
-
 function Help(props) {
+  useEffect(() => {
+    const displayHelp = document.getElementById("buttonHelp");
 
-
-
-  // useEffect(() => {
-
-  //   const launchGame = document.getElementById("buttonNewGame");
-
-  //   launchGame.addEventListener("click", (e) => {
-
-  //       displayModal({ visible: 1 });
-  //       e.stopImmediatePropagation();
-
-  //   });
-  // });
+    displayHelp.addEventListener("click", (e) => {
+      props.displayModalHelp({ visible: 1 });
+    });
+  });
 
   return (
     <>
-      <button
-        type="button"
-        className="buttonHelp"
-      >
+      <button type="button" id="buttonHelp">
         <span className="button_icon">
           <ButtonHelp />
         </span>
-        <span className="button_text">Help</span>
+        <span className="button_text">HELP</span>
       </button>
-      {/* <Modal visible={modal.visible} displayModal={displayModal} updateScore={props.updateScore} /> */}
     </>
-
   );
 }
 
