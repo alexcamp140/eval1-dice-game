@@ -25,7 +25,9 @@ function RollDice(props) {
     console.log("lancé");
     lastNumber = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
 
-    sound.play();
+    if (!props.disabled){
+      sound.play();
+    }
 
     // check if already an interval has been set up
     if (!nIntervId) {
@@ -47,7 +49,10 @@ function RollDice(props) {
         console.log(newScore)
         let nextPlayer= props.currentPlayer==="player1"?"player2":"player1"
         props.changeCurrentPlayer(nextPlayer);
-        soundError.play();
+
+        if (!props.disabled){
+          soundError.play();
+        }
         console.log("j'ai cnagé le player " + props.currentPlayer);
 
       } else {

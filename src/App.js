@@ -1,6 +1,7 @@
-import "./App.css";
+import "./App.scss";
 import RollDice from "./components/dice/rollDice";
 import Hold from "./components/hold/hold";
+import Help from "./components/help/help";
 import NewGame from "./components/newGame/newGame";
 import PictoCurrentPlayer from "./utils/pictoCurrentPlayer";
 import React, { useState, useEffect } from "react";
@@ -10,6 +11,8 @@ import initGame from "./components/newGame/initGame";
 import { checkIfWinner, returnWinner } from "./utils/calculScore/verifyScore";
 import winSound from "./media/win-sound.mp3";
 import { Howl } from "howler";
+import SoundNotification from "./components/soundNotification/soundNotification";
+
 
 const sound = new Howl({
   src: [winSound],
@@ -22,6 +25,7 @@ function App() {
   const [diceNumber, updateDiceNumber] = useState(6);
   const [winner, updateWinner] = useState(initWinner);
   const [modalWinner, updateModalWinner] = useState(initModal);
+  const[disabled, updateSoundStatus]= useState(false);
 
   // const btn = document.getElementById("buttonNewGame");
   // btn.setAttribute('disabled', 'disabled')
@@ -47,7 +51,11 @@ function App() {
       console.log("le winner est : " + newWinner);
       updateWinner(newWinner);
       updateModalWinner({ visible: 1 });
-      sound.play();
+
+      if (!disabled){
+        sound.play();
+      }
+
       console.log("le winner est de winner  :" + winner);
     }
 
@@ -67,7 +75,7 @@ function App() {
     //   );
     //   console.log("j'ai cnagé le player " + currentPlayer);
     // }
-  }, [winner, score, currentPlayer, diceNumber,updateWinner]);
+  }, [winner, score, currentPlayer, diceNumber,updateWinner,disabled]);
 
   return (
     <div className="App">
@@ -131,6 +139,7 @@ function App() {
                 score={score}
                 updateScore={updateScore}
                 changeCurrentPlayer={changeCurrentPlayer}
+                disabled={disabled}
               />
             </div>
             <div className="hold">
@@ -144,6 +153,10 @@ function App() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="footer">
+        <SoundNotification disabled={disabled} updateSoundStatus={updateSoundStatus}/>
+        <Help/>
       </div>
     </div>
   );

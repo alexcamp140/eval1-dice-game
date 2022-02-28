@@ -7,7 +7,7 @@ function ButtonNew(){
         const canvas = canvasRef.current;
         let context = canvas.getContext("2d");
         context.beginPath();
-        context.strokeStyle = 'rgba(255, 0, 0, 0.6)';
+        context.strokeStyle = 'rgb(248, 101, 101)';
         context.arc(14, 14,12,0, 2*Math.PI);
         context.stroke();
         context.moveTo(6,14);

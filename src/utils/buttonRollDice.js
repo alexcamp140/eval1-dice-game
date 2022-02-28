@@ -8,13 +8,13 @@ function ButtonRollDice(){
         const canvas = canvasRef.current;
         let context = canvas.getContext("2d");
         context.beginPath();
-        context.strokeStyle = 'rgba(255, 0, 0, 0.6)';
+        context.strokeStyle = 'rgb(248, 101, 101)';
        
 
         context.arc(14, 14, 10, (Math.PI/180)*30 , (Math.PI/180)*180)
         context.stroke();
         context.beginPath();
-        context.strokeStyle = 'rgba(255, 0, 0, 0.6)';
+        context.strokeStyle = 'rgb(248, 101, 101)';
 
         context.arc(14, 14, 10, (Math.PI/180)*210, (Math.PI/180)*360)
 

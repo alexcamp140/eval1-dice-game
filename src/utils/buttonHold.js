@@ -7,7 +7,7 @@ function ButtonHold() {
     const canvas = canvasRef.current;
     let context = canvas.getContext("2d");
     context.beginPath();
-    context.strokeStyle = "rgba(255, 0, 0, 0.6)";
+    context.strokeStyle = "rgb(248, 101, 101)";
     context.moveTo(4, 6);
     context.lineTo(11, 6);
     context.moveTo(17, 6);
