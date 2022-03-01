@@ -54,9 +54,11 @@ export default function ModalHelp(props) {
           <b>End of the game :</b> The first player to reach 100 points on
           global wins the game.
         </p>
+        <div className="btn-container">
         <button type="button" id="btn-yes" onClick={closeModal}>
           OK
         </button>
+        </div>
       </div>
     </div>
   );

@@ -25,9 +25,11 @@ export default function ModalWinner(props) {
         }}
       >
         <p> {winner} win this Game.</p>
+        <div className="btn-container">
         <button type="button" id="btn-yes" onClick={initGame}>
           New Game
         </button>
+        </div>
       </div>
     </div>
   );

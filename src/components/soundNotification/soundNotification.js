@@ -1,8 +1,8 @@
-import ButtonDisableSound from "../../utils/buttonSound";
+import ButtonDisableSound from "../../utils/iconSound";
 import "./soundNotification.scss";
 
 function SoundNotification(props) {
-  
+
   function update() {
     let newStatus = !props.disabled;
     props.updateSoundStatus(newStatus);

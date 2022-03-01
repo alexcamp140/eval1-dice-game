@@ -1,4 +1,4 @@
-import ButtonRollDice from "../../utils/buttonRollDice";
+import ButtonRollDice from "../../utils/iconRollDice";
 import diceSound from "../../media/gameboard-dice.mp3";
 import errorSound from "../../media/error-sound.mp3";
 import { Howl } from "howler";

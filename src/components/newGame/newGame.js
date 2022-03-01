@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import ButtonNew from "../../utils/buttonsNew";
+import ButtonNew from "../../utils/iconNew";
 import "./newGame.scss";
 import Modal from "../modal/modalNew";
 
@@ -16,7 +16,7 @@ function NewGame(props) {
 
   return (
     <>
-      <button type="button" id="buttonNewGame">
+      <button type="button" id="buttonNewGame" alt="New Game">
         <span className="button_icon">
           <ButtonNew />
         </span>

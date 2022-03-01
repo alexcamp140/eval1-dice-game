@@ -27,12 +27,14 @@ export default function Modal(props) {
         }}
       >
         <p>Would you like Launch a new game ?</p>
-        <button type="button" id="btn-yes" onClick={initGame}>
-          Yes
-        </button>
-        <button type="button" id="btn-no" onClick={closeModal}>
-          No
-        </button>
+        <div className="btn-container">
+          <button type="button" id="btn-yes" onClick={initGame}>
+            Yes
+          </button>
+          <button type="button" id="btn-no" onClick={closeModal}>
+            No
+          </button>
+        </div>
       </div>
     </div>
   );

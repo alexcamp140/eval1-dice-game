@@ -1,4 +1,4 @@
-import ButtonHold from "../../utils/buttonHold";
+import ButtonHold from "../../utils/iconHold";
 import "./hold.scss";
 import { updateRoundScore } from "../../utils/calculScore/score";
 

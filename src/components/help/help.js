@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import ButtonHelp from "../../utils/buttonsHelp";
+import ButtonHelp from "../../utils/iconHelp";
 import "./help.scss";
 
 function Help(props) {

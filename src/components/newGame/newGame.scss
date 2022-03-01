@@ -1,19 +1,24 @@
 #buttonNewGame {
-    display: inline-flex;
-    height: 50px;
-    padding: 0;
-    border: none;
-    outline: none;
-    background: none;
-    align-items: center;
-    justify-content: center;
+  display: inline-flex;
+  height: 50px;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  align-items: center;
+  justify-content: center;
 
-    .button_text{
-      font-size: 1.7rem;
-      font-family: "Lato", sans-serif;
-      font-weight: 300;
-      padding-left: 5px;
+  .button_text {
+    font-size: 1.7rem;
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    padding-left: 5px;
   }
+}
 
+#buttonNewGame:hover {
+  .button_text{
+    font-size: 1.9rem;
     
-  }
+}
+}
